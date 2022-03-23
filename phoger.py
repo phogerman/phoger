@@ -1,6 +1,7 @@
 from res.lib import enclib
+from res.lib import utils
 import argparse
-import hashlib
+import hashlib,json
 
 
 # Parsing the arguments from command line
@@ -39,9 +40,10 @@ encrypted_msg = enclib.encrypt_AES_256_GCM(msg, to_md5(password))
 #print(enclib.decrypt_AES_256_gcm(encrypted_msg[0],m),"\n\n\n")
 
 #print(encrypted_msg[2],encrypted_msg[1],"\n\n\n", enclib.decrypt_AES_256_gcm(encrypted_msg[0],m))
-#print(encrypted_msg)
+print(encrypted_msg,enclib.decrypt_AES_256_gcm(encrypted_msg,to_md5(password)))
 
 #print(encrypted_msg[2],encrypted_msg[1],"\n\n\n", enclib.decrypt_AES_256_gcm(encrypted_msg[0],m))
-print(encrypted_msg)
+
+
 
 #print(encrypted_msg[1],"\n\n\n", enclib.decrypt_AES_256_gcm(encrypted_msg[0],m))
