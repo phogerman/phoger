@@ -35,7 +35,12 @@ encrypted_msg = enclib.encrypt_AES_256_GCM(msg, to_md5(password))
 #print("Message = ", encrypted_msg, "  Password Hash=", to_md5(password))
 
 #print("len=",enclib.decrypt_AES_256_gcm(encrypted_msg,"abc"))
-m = to_md5("manu4")
+
 #print(enclib.decrypt_AES_256_gcm(encrypted_msg[0],m),"\n\n\n")
+<<<<<<< HEAD
 print(encrypted_msg[2],encrypted_msg[1],"\n\n\n", enclib.decrypt_AES_256_gcm(encrypted_msg[0],m))
 #print(encrypted_msg)
+=======
+#print(encrypted_msg[2],encrypted_msg[1],"\n\n\n", enclib.decrypt_AES_256_gcm(encrypted_msg[0],m))
+print(encrypted_msg)
+>>>>>>> 0aebe5788efd0b95a4f7542ee961900a975fab7e
