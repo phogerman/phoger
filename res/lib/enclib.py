@@ -4,9 +4,7 @@
 from Crypto.Cipher import AES
 from . import utils
 from base64 import b64encode
-import binascii
-import os
-import io
+import json
 
 # AES 256 GCM ENCRYPTION
 
@@ -15,7 +13,15 @@ def encrypt_AES_256_GCM(msg, key):
     key_hex = key.encode('utf8')
     aesCipher = AES.new(key_hex, AES.MODE_GCM)
     ciphertext, authTag = aesCipher.encrypt_and_digest(msg.encode('utf8'))
+
+    #Converting output to JSON
+    json_k = [ 'nonce', 'ciphertext', 'tag' ]
+    json_v = [ b64encode(x).decode('utf-8') for x in [aesCipher.nonce, ciphertext, authTag ]]
+    result = json.dumps(dict(zip(json_k, json_v)))
     
+    
+
+    """
     #Convert Components to strings
 
     str_cipher = b64encode(ciphertext).decode('utf-8')
@@ -30,7 +36,7 @@ def encrypt_AES_256_GCM(msg, key):
     bit_authTag = ''.join(format(ord(i), '08b') for i in str_authTag)
 
     #The length of the ciphertext is added to the start for using at the time of decryption
-    length_bit_cipher = '{:032b}'.format(len(bit_cipher))
+    length_bit_cipher = '{:032b}'.format(len(bit_cipher)) """
 
     """
     We are returning the concatenated string of binary representations of
@@ -39,7 +45,7 @@ def encrypt_AES_256_GCM(msg, key):
         aesCipher.nonce,
         authTag.
     """
-    return length_bit_cipher+bit_cipher+bit_nonce+bit_authTag,bit_cipher
+    #return length_bit_cipher+bit_cipher+bit_nonce+bit_authTag,bit_cipher
 
     
     #####################################################
@@ -48,6 +54,7 @@ def encrypt_AES_256_GCM(msg, key):
     #return bit_cipher
     #return length_bit_cipher+bit_cipher+bit_nonce+bit_authTag 
     #return bit_nonce
+    return result
     
 
 
