@@ -28,6 +28,7 @@ def to_md5(password):
 
 encrypted_msg = enclib.encrypt_AES_256_GCM(msg, to_md5(password))
 
+# Pillow integration
 
 #######################################################################
 #Test and Trial Printing section below
