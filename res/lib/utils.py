@@ -2,7 +2,7 @@
 import json
 
 
-
+#########################################
 #Function to convert dictionary to binary
  
 def dict_to_binary(the_dict):
@@ -40,3 +40,6 @@ def add_spaces(string):
     n = 8	# every 8 characters
     split_string = [string[i:i+n] for i in range(0, len(string), n)]
     return " ".join(split_string)
+
+
+#########################################
