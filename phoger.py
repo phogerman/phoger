@@ -66,7 +66,7 @@ if(xs*ys*4 >= len_msg):
                     print("Aft",r)
             else:
                 if((r%2) == 0):
-                    print("Bef",r)
+                    print("Bef",r)#test
                     r += 1
                     print("Aft",r)
             # k+1 th
